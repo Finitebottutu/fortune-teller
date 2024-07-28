@@ -232,3 +232,26 @@ document.addEventListener("DOMContentLoaded", function () {
     return dobDate instanceof Date && !isNaN(dobDate) && dobDate < today;
   }
 });
+
+const returnButton = document.getElementById("returnButton");
+returnButton.addEventListener("click", function() {
+    // Stop the audio
+    audio.pause();
+    audio.currentTime = 0;
+
+    // Clear the result div
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "";
+
+    // Hide the result page and show the form page
+    resultPage.classList.add("hidden");
+    resultPage.classList.remove("active");
+    formPage.classList.remove("hidden");
+    formPage.classList.add("active");
+
+    // Reset the form
+    form.reset();
+
+    // Reset processing state
+    isProcessing = false;
+});
